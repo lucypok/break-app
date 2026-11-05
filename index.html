@@ -286,6 +286,31 @@ body:not([data-step="1"]) .fbtn,body:not([data-step="1"]) .thm,body:not([data-st
 .fbtn{left:1rem}
 .thm{right:4.3rem}
 .bk{left:1rem;right:auto}
+
+/* round 8 */
+.eg{margin:.7rem 0 0;font:.95rem/1.3 "Lora",Georgia,serif;color:var(--leadc)}
+#letter .sj{font-weight:400;-webkit-text-stroke:.9px #5a3d20}
+#s4.opened{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 2.5rem)}
+@media (hover:none){.opt:hover,.btn:hover,.pill button:hover{scale:1}}
+/* phone-only adjustments */
+@media (max-width:600px){
+.pill{width:min(68vw,380px)}
+#s1 .err{height:.5rem;margin:0}
+#s1 .disc{margin-top:1.4rem}
+.arc .ch{transform:none!important}
+.arc{white-space:normal;text-wrap:balance}
+#s2 .who{margin-bottom:1.3rem}
+#s2 h2{margin-top:0;top:0}
+.opts{width:min(84vw,680px)}
+#guide{max-width:min(82vw,32rem);margin-bottom:2.4rem}
+.where{max-width:min(84vw,38rem)}
+.scroll{width:min(84vw,32rem)}
+.opt b{font-size:1.75rem}
+#guide h3,.where h3{font-size:1.35rem}
+#guide,.where{font-size:.95rem}
+#s4 p.lead{font-size:.95rem}
+.yn{margin-top:2.6rem}
+}
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
 if(v!=='light'&&v!=='dark'){var h=new Date().getHours();v=(h>=19||h<7)?'dark':'light'}
@@ -313,7 +338,8 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
 
  <section class="screen" id="s1">
   <h1><span class="big">Who are you</span><span class="mid out">breaking-app</span><span class="sm in">with today?</span></h1>
-  <form class="pill" id="f" novalidate><input id="u" type="text" inputmode="url" autocomplete="off" aria-label="Link of the app or website" placeholder="Paste link of the app/website"><button aria-label="Break up"><svg width="38" height="34" viewBox="0 0 38 34"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#000"/></svg></button></form>
+  <form class="pill" id="f" novalidate><input id="u" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="App or website name" placeholder="Paste app / website name"><button aria-label="Break up"><svg width="38" height="34" viewBox="0 0 38 34"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#000"/></svg></button></form>
+  <p class="eg">Example: Instagram</p>
   <p class="err" id="err" role="alert"></p>
   <p class="disc">We can’t cover the terms and conditions of every website and app, so we encourage you to read through them yourself.</p>
  </section>
@@ -404,7 +430,7 @@ const beat=()=>{cancelAnimationFrame(raf);const f=()=>{if(!alive){h.style.scale=
  if(document.body.classList.contains('pop-on')){h.style.scale='';raf=requestAnimationFrame(f);return}
  const t=(au.paused?performance.now()/1000:au.currentTime)%T;
  h.style.scale=calm?'':1+bump(t-.12,.05)+bump(t-.41,.035);if(t>=.41&&!fd){fd=true;nextWord()}else if(t<.3)fd=false;raf=requestAnimationFrame(f)};f()};
-const step=n=>{document.body.dataset.step=n;if(n!=1){const p=document.getElementById('fp');if(p)p.hidden=true;const fb=document.getElementById('fbtn');if(fb)fb.setAttribute('aria-expanded','false')}if(n!=4){boxOpen(false,true);document.querySelectorAll('[data-a]').forEach(x=>x.disabled=false)}document.body.classList.remove('sc');if(n==4){$('#s4').scrollTop=0;requestAnimationFrame(()=>upd())}if(n==1){alive=true;document.body.removeAttribute('data-dead');play();beat()}};
+const step=n=>{document.body.dataset.step=n;if(n!=1){const p=document.getElementById('fp');if(p)p.hidden=true;const fb=document.getElementById('fbtn');if(fb)fb.setAttribute('aria-expanded','false')}if(n!=4){boxOpen(false,true);document.querySelectorAll('[data-a]').forEach(x=>x.disabled=false)}document.body.classList.remove('sc');{const m=$('#more');if(m&&n!=4)m.hidden=true}if(n==4){U.open=false;shw.style.transition='none';shw.style.height='0px';$('#s4').classList.remove('opened');$('#s4').scrollTop=0;requestAnimationFrame(()=>upd())}if(n==1){alive=true;document.body.removeAttribute('data-dead');play();beat()}};
 au.addEventListener('ended',()=>{if(alive&&want){au.currentTime=0;au.play().catch(()=>{})}});snd.onclick=()=>{if(au.paused){want=true;play()}else{want=false;au.pause()}};au.addEventListener('play',()=>ic(1));au.addEventListener('pause',()=>ic(0));
 ['pointerdown','pointerup','touchend','click','keydown'].forEach(e=>addEventListener(e,ev=>{if(ev.target.closest&&ev.target.closest('#snd'))return;play()}));
 ic(0);beat();play();
@@ -413,7 +439,7 @@ const fp=$('#fp'),fs=document.head.appendChild(document.createElement('style'));
 try{fh=localStorage.getItem('bofH')||fh;fb=localStorage.getItem('bofB')||fb}catch(e){}
 const mk=(l,k)=>l.map(f=>`<button data-k='${k}' data-f='${f}' style='font-family:${f}'>${f}</button>`).join('');
 fp.innerHTML='<p>Headline font</p>'+mk(HF,'h')+'<p>Text font</p>'+mk(BF,'b');
-const applyF=()=>{fs.textContent=`h1,h2,.opt b,.foot,.where h3,#letter{font-family:'${fh}',cursive!important}.who,.lead,pre,.err,.hint,.opt span,.where p,.disc{font-family:'${fb}',Georgia,serif!important}`;
+const applyF=()=>{fs.textContent=`h1,h2,.opt b,.foot,.where h3,#letter{font-family:'${fh}',cursive!important}.who,.lead,pre,.err,.hint,.opt span,.where p,.disc,.eg{font-family:'${fb}',Georgia,serif!important}`;
  fp.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.f===(b.dataset.k==='h'?fh:fb)));
  try{localStorage.setItem('bofH',fh);localStorage.setItem('bofB',fb)}catch(e){}};
 fp.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.k==='h')fh=b.dataset.f;else fb=b.dataset.f;applyF();setTimeout(arc,150);setTimeout(arc,900)};
@@ -502,15 +528,35 @@ const guide=()=>{const g=GL[AL[appKey()]]||{},w=$('#guide');w.replaceChildren();
 const done=y=>{const n=name,L=(st===1&&!y)?null:LT[st](y);
  $('#t3').textContent=st===4?(y?'Take your stuff.':'Clean break.'):TT[st];
  $('#lead').textContent=LD[st](n,y);
- $('#letter').textContent=L?`Subject: ${L[0]}\n\nDear ${n} privacy team,\n\n${L[1]}\n\nYou have one month to reply.\n\nThank you,\n[your name and account email]`:'';
+ {const lt=$('#letter');lt.textContent='';if(L){const sj=document.createElement('b');sj.className='sj';sj.textContent='Subject:';lt.append(sj,` ${L[0]}\n\nDear ${n} privacy team,\n\n${L[1]}\n\nYou have one month to reply.\n\nThank you,\n[your name and account email]`)}}
  $('#s4').classList.toggle('noletter',!L);$('#letter').hidden=!L;$('#scroll').hidden=!L;$('#cp').hidden=!L;where(y,!!L);
  if(st===4){h.classList.add('fall');fallT=setTimeout(()=>step(4),1500)}else step(4)};
+
+/* ---- match what people type: links, names, nicknames and small typos ---- */
+Object.assign(NM,{instagram:'Instagram',facebook:'Facebook',canva:'Canva',tumblr:'Tumblr',google:'Google',gmail:'Gmail',reddit:'Reddit',discord:'Discord',tinder:'Tinder',meta:'Meta'});
+const NICK={ig:'instagram',insta:'instagram',gram:'instagram',fb:'facebook',face:'facebook',yt:'youtube',tt:'tiktok',wa:'whatsapp',whats:'whatsapp',chatgpt:'chatgpt',gpt:'chatgpt',prime:'amazon',primevideo:'amazon',amzn:'amazon',youtu:'youtube',gmaps:'google',googlemaps:'google'};
+const KNOWN=[...new Set([...Object.keys(AL),...Object.keys(NM),...Object.keys(NICK)])];
+const flat=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
+const lev=(a,b)=>{const d=Array.from({length:a.length+1},(_,i)=>[i]);for(let j=1;j<=b.length;j++)d[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]};
+const pick=k=>{if(!k)return null;if(NICK[k])return NICK[k];if(KNOWN.includes(k))return k;
+ if(k.length<5)return null;let best=null,bd=9;KNOWN.forEach(c=>{if(c.length<5)return;const x=lev(k,c);if(x<bd){bd=x;best=c}});
+ return bd<=(k.length>=9?2:1)?(NICK[best]||best):null};
+const title=t=>t.trim().split(/\s+/).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+function resolveApp(v){
+ v=v.trim();let key=null,fallback;
+ const looksUrl=!/\s/.test(v)&&(/^[a-z][a-z0-9+.-]*:\/\//i.test(v)||/\.[a-z]{2,}(\/|\?|#|:|$)/i.test(v));
+ if(looksUrl){let hn='';try{hn=new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(v)?v:'https://'+v).hostname.replace(/^www\./,'')}catch(e){}
+  if(hn){const b=sld(hn).toLowerCase();key=pick(b);fallback=b.charAt(0).toUpperCase()+b.slice(1);if(!key)return{host:hn,name:NM[b]||fallback}}}
+ if(!key){/* a name: drop filler words like "the", "app", "website" */
+  const words=v.replace(/[^\p{L}\p{N}\s.&+-]/gu,' ').split(/\s+/).filter(w=>w&&!/^(the|app|apps|website|site|web|account|de|het|een)$/i.test(w));
+  key=pick(flat(v))||pick(flat(words.join('')))||pick(flat(words[0]||''));fallback=title(v);
+  if(!key){const f=flat(v)||'app';return{host:f+'.app',name:fallback}}}
+ return{host:key+'.app',name:NM[key]||title(key)}}
 let brk=0,ct;$('#f').addEventListener('submit',e=>{
  e.preventDefault();if(brk)return;const v=$('#u').value.trim();
  if(!v){$('#u').focus();return}
  $('#err').textContent='';
- try{host=new URL(/^https?:\/\//i.test(v)?v:'https://'+v).hostname.replace(/^www\./,'')}catch(x){host=v}
- const b=sld(host);name=NM[b.toLowerCase()]||b.charAt(0).toUpperCase()+b.slice(1);avail();
+ const R=resolveApp(v);host=R.host;name=R.name;avail();
  brk=1;h.classList.remove('peek','rebuild');gap(.6);h.classList.add('cracked','c1');
  clearTimeout(ct);setTimeout(()=>{brk=0;
   $('#w2').textContent='with '+name+'?';$('#who').textContent='Breaking-app with '+name;
@@ -545,9 +591,15 @@ way.onclick=hidePop;pop.addEventListener('click',e=>{if(e.target===pop)hidePop()
 addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('pop-on'))hidePop()});
 setTimeout(()=>{if(document.body.dataset.step==='1')showPop()},1200);
 const sc4=$('#s4'),shw=document.querySelector('.sheetwrap'),ltr=$('#letter'),pinOn=matchMedia('(min-width:900px) and (hover:hover)');
-const lowRoll=document.querySelectorAll('#scroll .roll')[1],U={h:0,pin:0};
+const lowRoll=document.querySelectorAll('#scroll .roll')[1],U={h:0,pin:0,open:false};
+const topRoll=document.querySelector('#scroll .roll');
+shw.addEventListener('transitionend',e=>{if(e.target===shw&&U.open&&!pinOn.matches){shw.style.transition='none';shw.style.height='auto';$('#s4').classList.add('opened')}});
 function upd(){
  let st=sc4.scrollTop;const VH=sc4.getBoundingClientRect().bottom,live=!$('#scroll').hidden,H=live?ltr.offsetHeight:0;
+ if(!pinOn.matches){const top=topRoll.getBoundingClientRect().top,mr0=$('#more');
+  if(live&&!U.open&&top<VH*.8){U.open=true;shw.style.transition=calm?'none':'height 1.5s cubic-bezier(.3,.6,.2,1)';shw.style.height=H+'px';if(calm){shw.style.height='auto';sc4.classList.add('opened')}}
+  $('#uh').style.opacity=U.open?0:1;document.body.classList.toggle('sc',st>20);
+  if(mr0)mr0.hidden=!(document.body.dataset.step==='4'&&live&&!U.open&&top>=VH*.8);return}
  /* where the bottom roll would sit with nothing unrolled and nothing pinned */
  const y0=lowRoll.getBoundingClientRect().bottom-U.h-U.pin+st;
  /* the roll unrolls 1:1 with scrolling, in place, until its bottom reaches the bottom of the screen; from then on the page scrolls along with it */
@@ -562,7 +614,7 @@ function upd(){
  sc4.style.setProperty('--pin',pin+'px');
  $('#uh').style.opacity=h>2?0:1;
  const mr=$('#more');if(mr)mr.hidden=!(document.body.dataset.step==='4'&&live&&st<20&&lowRoll.getBoundingClientRect().top>VH-24)}
-sc4.addEventListener('scroll',upd,{passive:true});$('#more').onclick=()=>sc4.scrollBy({top:Math.round(sc4.clientHeight*.8),behavior:calm?'auto':'smooth'});addEventListener('resize',upd);
+sc4.addEventListener('scroll',upd,{passive:true});$('#more').onclick=()=>sc4.scrollBy({top:pinOn.matches?Math.round(sc4.clientHeight*.8):Math.max(120,Math.round(topRoll.getBoundingClientRect().top-sc4.clientHeight*.3)),behavior:calm?'auto':'smooth'});addEventListener('resize',upd);
 document.querySelectorAll('.opt').forEach(o=>o.addEventListener('keydown',e=>{if(e.target===o&&(e.key==='Enter'||e.key===' ')){e.preventDefault();o.click()}}));
 
 (()=>{const A=4,D=.09,doc=document;
