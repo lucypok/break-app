@@ -394,7 +394,7 @@ body[data-step="2"].pop-on #who2 .ch{opacity:0}
 }
 /* round 9 (phone only): new ornament with a heart that breaks, curved "You + app: status" line, lighter dark header bar */
 @media (max-width:600px){
-#s2 .orn{width:min(40vw,158px);margin:0 auto .4rem;color:#ff4296;opacity:1}
+#s2 .orn{width:min(40vw,158px);margin:0 auto .4rem}
 .orn .hh{opacity:0}
 .orn .hw,.orn .hh{transform-box:fill-box}
 .orn .hw{transform-origin:50% 55%}
@@ -419,6 +419,14 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 :root[data-theme="dark"] body[data-step="2"] .bk,:root[data-theme="dark"] body[data-step="2"] .snd{background:transparent}
 /* light mode: a bit more outline on the white "breaking-app" lettering */
 :root:not([data-theme="dark"]) #s1 h1 .out{-webkit-text-stroke-width:.06em}
+}
+/* round 10 (phone only): taller "Accepted all?" bar with text that fits, slightly bolder section titles, yes/no closer to the box */
+@media (max-width:600px){
+body[data-step="2"] #who2{min-height:calc(env(safe-area-inset-top,0px) + 5rem);padding-left:3.3rem;padding-right:3.3rem}
+body[data-step="2"] #who2 .arc:not(.dk){white-space:nowrap;font-size:min(.78rem,3vw)}
+body[data-step="2"] #who2 .phl{font-size:min(.78rem,3vw)}
+.where h3,#guide h3{-webkit-text-stroke:.35px currentColor}
+#s3 .yn{margin-top:1.6rem}
 }
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
@@ -540,7 +548,7 @@ const bump=(x,a)=>x<0?0:a*Math.min(1,x/.03)*Math.exp(-x/.09);
 const beat=()=>{cancelAnimationFrame(raf);const f=()=>{if(!alive){h.style.scale='';return}
  if(document.body.classList.contains('pop-on')){h.style.scale='';raf=requestAnimationFrame(f);return}
  const t=(au.paused?performance.now()/1000:au.currentTime)%T;
- const Z=matchMedia('(max-width:600px)').matches?1.6:1;h.style.scale=calm?'':1+bump(t-.12,.05*Z)+bump(t-.41,.035*Z);if(t>=.41&&!fd){fd=true;nextWord()}else if(t<.3)fd=false;raf=requestAnimationFrame(f)};f()};
+ const Z=matchMedia('(max-width:600px)').matches?2.3:1;h.style.scale=calm?'':1+bump(t-.12,.05*Z)+bump(t-.41,.035*Z);if(t>=.41&&!fd){fd=true;nextWord()}else if(t<.3)fd=false;raf=requestAnimationFrame(f)};f()};
 const step=n=>{document.body.dataset.step=n;if(n!=1){const p=document.getElementById('fp');if(p)p.hidden=true;const fb=document.getElementById('fbtn');if(fb)fb.setAttribute('aria-expanded','false')}if(n!=4){boxOpen(false,true);document.querySelectorAll('[data-a]').forEach(x=>x.disabled=false)}document.body.classList.remove('sc');{const m=$('#more');if(m&&n!=4)m.hidden=true}if(n==4){U.open=false;shw.style.transition='none';shw.style.height='0px';$('#s4').classList.remove('opened');$('#s4').scrollTop=0;requestAnimationFrame(()=>upd())}if(n==1){alive=true;document.body.removeAttribute('data-dead');play();beat()}};
 au.addEventListener('ended',()=>{if(alive&&want){au.currentTime=0;au.play().catch(()=>{})}});snd.onclick=()=>{if(au.paused){want=true;play()}else{want=false;au.pause()}};au.addEventListener('play',()=>ic(1));au.addEventListener('pause',()=>ic(0));
 ['pointerdown','pointerup','touchend','click','keydown'].forEach(e=>addEventListener(e,ev=>{if(ev.target.closest&&ev.target.closest('#snd'))return;play()}));
