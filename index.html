@@ -428,6 +428,29 @@ body[data-step="2"] #who2 .phl{font-size:min(.78rem,3vw)}
 .where h3,#guide h3{-webkit-text-stroke:.35px currentColor}
 #s3 .yn{margin-top:1.6rem}
 }
+/* round 11 (phone only): smaller hot-pink ornament, content a bit lower, header bar reaches the top of the screen */
+@media (max-width:600px){
+#s2 .orn{width:min(32vw,126px);color:var(--hot);opacity:1}
+#s2{padding-top:calc(env(safe-area-inset-top,0px) + 6.3rem)}
+body[data-step="2"] #who2{top:calc(0px - env(safe-area-inset-top,0px));min-height:calc(2 * env(safe-area-inset-top,0px) + 5rem);padding-top:calc(2 * env(safe-area-inset-top,0px))}
+:root[data-theme="dark"] body[data-step="2"] #who2{background:#240c17}
+}
+/* round 12 (phone only): the heart beats bigger and longer before it breaks, so it can be seen */
+@media (max-width:600px){
+@keyframes hw2{0%{opacity:1;transform:scale(1)}10%{transform:scale(2)}20%{transform:scale(1)}30%{transform:scale(1.8)}40%{transform:scale(1)}50%{opacity:1;transform:scale(1)}50.1%,100%{opacity:0;transform:scale(1)}}
+body[data-step="2"] .orn .hw{animation:hw2 2.4s 1.1s linear both}
+body[data-step="2"] .orn .hl{animation:hl 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
+body[data-step="2"] .orn .hr{animation:hr 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
+}
+@media (max-width:600px) and (prefers-reduced-motion:reduce){
+body[data-step="2"] .orn .hw{animation:hw2 2.4s 1.1s linear both}
+body[data-step="2"] .orn .hl{animation:hl 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
+body[data-step="2"] .orn .hr{animation:hr 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
+}
+/* round 13 (phone only): no smoothing on the first page's heart, so the heartbeat bumps are visible */
+@media (max-width:600px){
+body[data-step="1"] .heart{transition:margin-top 1s}
+}
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
 if(v!=='light'&&v!=='dark'){var h=new Date().getHours();v=(h>=19||h<7)?'dark':'light'}
@@ -739,17 +762,20 @@ function upd(){
  /* where the bottom roll would sit with nothing unrolled and nothing pinned */
  const y0=lowRoll.getBoundingClientRect().bottom-U.h-U.pin+st;
  /* the roll unrolls 1:1 with scrolling, in place, until its bottom reaches the bottom of the screen; from then on the page scrolls along with it */
- const room=Math.max(0,Math.min(H,VH-28-y0));
+ /* dead zone: the roll stays closed until the "scroll to unravel" line has scrolled into view; only scrolling beyond that unrolls it */
+ const uhB=$('#uh').getBoundingClientRect().bottom-U.h-U.pin+st,D=live?Math.max(0,Math.round(uhB+16-VH)):0,eff=Math.max(0,st-D);
+ const room=Math.max(0,Math.min(H,VH-28-y0+D));
  /* furthest the page may scroll: when the last line (the disclaimer) sits just above the bottom edge, once the letter is fully open */
  const vb=sc4.lastElementChild.getBoundingClientRect().bottom,P=pinOn.matches&&live?room:0;
- const end=Math.max(H,vb+st-U.pin+(H-U.h)+P-VH+32);
+ const end=Math.max(H+D,vb+st-U.pin+(H-U.h)+P-VH+32);
  if(st>end+1){sc4.scrollTop=end;st=sc4.scrollTop}
- const h=Math.min(st,H),pin=pinOn.matches&&live?Math.min(st,room):0;
+ const h=Math.min(eff,H),pin=pinOn.matches&&live?Math.min(eff,room):0;
  U.h=h;U.pin=pin;shw.style.height=h+'px';
  document.body.classList.toggle('sc',st>20);
  sc4.style.setProperty('--pin',pin+'px');
  $('#uh').style.opacity=h>2?0:1;
  const mr=$('#more');if(mr)mr.hidden=!(document.body.dataset.step==='4'&&live&&st<20&&lowRoll.getBoundingClientRect().top>VH-24)}
+(()=>{const m=document.createElement('meta');m.name='theme-color';const tc=()=>{const r=document.documentElement,t=r.dataset.theme,d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);if(document.body.dataset.step==='2'&&matchMedia('(max-width:600px)').matches){m.content=d?'#240c17':'#ffffff';if(!m.isConnected)document.head.appendChild(m)}else m.remove()};new MutationObserver(tc).observe(document.body,{attributes:true,attributeFilter:['data-step']});new MutationObserver(tc).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});tc()})();
 sc4.addEventListener('scroll',upd,{passive:true});$('#more').onclick=()=>sc4.scrollBy({top:pinOn.matches?Math.round(sc4.clientHeight*.8):Math.max(120,Math.round(topRoll.getBoundingClientRect().top-sc4.clientHeight*.3)),behavior:calm?'auto':'smooth'});addEventListener('resize',upd);
 document.querySelectorAll('.opt').forEach(o=>o.addEventListener('keydown',e=>{if(e.target===o&&(e.key==='Enter'||e.key===' ')){e.preventDefault();o.click()}}));
 
