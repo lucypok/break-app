@@ -354,7 +354,7 @@ body[data-step="2"] #who2 .phl{display:block;text-wrap:balance}
 body[data-step="2"] #who2 .phl b{font-weight:700}
 :root body[data-step="2"] .bk,:root body[data-step="2"] .snd{background:var(--bg1);border-color:var(--whoc);box-shadow:none}
 :root body[data-step="2"] .bk svg,:root body[data-step="2"] .snd svg{stroke:var(--whoc)}
-#s2 .orn{display:block;flex:none;width:min(52vw,210px);height:auto;margin:0 auto .2rem;color:var(--leadc);opacity:.9}
+#s2 .orn{display:block;flex:none;width:min(52vw,210px);height:auto;margin:0 auto .2rem;color:var(--hot);opacity:1}
 #s2 h2{margin-left:-3vw;margin-right:-3vw}
 /* "You + app: status" lines: a bit smaller, a bit more weight */
 #who,#whog{font-size:.92rem;font-weight:500}
@@ -394,7 +394,7 @@ body[data-step="2"].pop-on #who2 .ch{opacity:0}
 }
 /* round 9 (phone only): new ornament with a heart that breaks, curved "You + app: status" line, lighter dark header bar */
 @media (max-width:600px){
-#s2 .orn{width:min(40vw,158px);margin:0 auto .4rem}
+#s2 .orn{width:min(40vw,158px);margin:0 auto .4rem;color:var(--hot);opacity:1}
 .orn .hh{opacity:0}
 .orn .hw,.orn .hh{transform-box:fill-box}
 .orn .hw{transform-origin:50% 55%}
@@ -420,37 +420,7 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 /* light mode: a bit more outline on the white "breaking-app" lettering */
 :root:not([data-theme="dark"]) #s1 h1 .out{-webkit-text-stroke-width:.06em}
 }
-/* round 10 (phone only): taller "Accepted all?" bar with text that fits, slightly bolder section titles, yes/no closer to the box */
-@media (max-width:600px){
-body[data-step="2"] #who2{min-height:calc(env(safe-area-inset-top,0px) + 5rem);padding-left:3.3rem;padding-right:3.3rem}
-body[data-step="2"] #who2 .arc:not(.dk){white-space:nowrap;font-size:min(.78rem,3vw)}
-body[data-step="2"] #who2 .phl{font-size:min(.78rem,3vw)}
-.where h3,#guide h3{-webkit-text-stroke:.35px currentColor}
-#s3 .yn{margin-top:1.6rem}
-}
-/* round 11 (phone only): smaller hot-pink ornament, content a bit lower, header bar reaches the top of the screen */
-@media (max-width:600px){
-#s2 .orn{width:min(32vw,126px);color:var(--hot);opacity:1}
-#s2{padding-top:calc(env(safe-area-inset-top,0px) + 6.3rem)}
-body[data-step="2"] #who2{top:calc(0px - env(safe-area-inset-top,0px));min-height:calc(2 * env(safe-area-inset-top,0px) + 5rem);padding-top:calc(2 * env(safe-area-inset-top,0px))}
-:root[data-theme="dark"] body[data-step="2"] #who2{background:#240c17}
-}
-/* round 12 (phone only): the heart beats bigger and longer before it breaks, so it can be seen */
-@media (max-width:600px){
-@keyframes hw2{0%{opacity:1;transform:scale(1)}10%{transform:scale(2)}20%{transform:scale(1)}30%{transform:scale(1.8)}40%{transform:scale(1)}50%{opacity:1;transform:scale(1)}50.1%,100%{opacity:0;transform:scale(1)}}
-body[data-step="2"] .orn .hw{animation:hw2 2.4s 1.1s linear both}
-body[data-step="2"] .orn .hl{animation:hl 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
-body[data-step="2"] .orn .hr{animation:hr 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
-}
-@media (max-width:600px) and (prefers-reduced-motion:reduce){
-body[data-step="2"] .orn .hw{animation:hw2 2.4s 1.1s linear both}
-body[data-step="2"] .orn .hl{animation:hl 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
-body[data-step="2"] .orn .hr{animation:hr 1.7s 1.756s cubic-bezier(.2,.9,.3,1) both}
-}
-/* round 13 (phone only): no smoothing on the first page's heart, so the heartbeat bumps are visible */
-@media (max-width:600px){
-body[data-step="1"] .heart{transition:margin-top 1s}
-}
+@media (max-width:600px){.card .chipline{top:-.3rem;margin-bottom:1.05rem}.card .chipline .chip{font-size:1.25rem;padding:.11em .4em .15em;border-radius:9px}}
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
 if(v!=='light'&&v!=='dark'){var h=new Date().getHours();v=(h>=19||h<7)?'dark':'light'}
@@ -568,10 +538,11 @@ let want=true,alive=true,raf=0;const words=['breaking-app','friendzoning','setti
 const play=()=>{if(!want||!alive)return;au.play().then(()=>ic(1)).catch(()=>ic(0))};
 const fade=()=>{const i=setInterval(()=>{au.volume=Math.max(0,au.volume-.12);if(au.volume<=0){au.pause();au.volume=.9;clearInterval(i)}},40)};
 const bump=(x,a)=>x<0?0:a*Math.min(1,x/.03)*Math.exp(-x/.09);
-const beat=()=>{cancelAnimationFrame(raf);const f=()=>{if(!alive){h.style.scale='';return}
+const beat=()=>{cancelAnimationFrame(raf);const f=()=>{if(!alive){h.style.scale='';h.style.transition='';return}
+ h.style.transition='margin-top 1s';
  if(document.body.classList.contains('pop-on')){h.style.scale='';raf=requestAnimationFrame(f);return}
  const t=(au.paused?performance.now()/1000:au.currentTime)%T;
- const Z=matchMedia('(max-width:600px)').matches?2.3:1;h.style.scale=calm?'':1+bump(t-.12,.05*Z)+bump(t-.41,.035*Z);if(t>=.41&&!fd){fd=true;nextWord()}else if(t<.3)fd=false;raf=requestAnimationFrame(f)};f()};
+ const Z=(matchMedia('(max-width:600px)').matches?2.3:1)*(document.body.dataset.step==='1'?1:.3);h.style.scale=calm?'':1+bump(t-.12,.05*Z)+bump(t-.41,.035*Z);if(t>=.41&&!fd){fd=true;nextWord()}else if(t<.3)fd=false;raf=requestAnimationFrame(f)};f()};
 const step=n=>{document.body.dataset.step=n;if(n!=1){const p=document.getElementById('fp');if(p)p.hidden=true;const fb=document.getElementById('fbtn');if(fb)fb.setAttribute('aria-expanded','false')}if(n!=4){boxOpen(false,true);document.querySelectorAll('[data-a]').forEach(x=>x.disabled=false)}document.body.classList.remove('sc');{const m=$('#more');if(m&&n!=4)m.hidden=true}if(n==4){U.open=false;shw.style.transition='none';shw.style.height='0px';$('#s4').classList.remove('opened');$('#s4').scrollTop=0;requestAnimationFrame(()=>upd())}if(n==1){alive=true;document.body.removeAttribute('data-dead');play();beat()}};
 au.addEventListener('ended',()=>{if(alive&&want){au.currentTime=0;au.play().catch(()=>{})}});snd.onclick=()=>{if(au.paused){want=true;play()}else{want=false;au.pause()}};au.addEventListener('play',()=>ic(1));au.addEventListener('pause',()=>ic(0));
 ['pointerdown','pointerup','touchend','click','keydown'].forEach(e=>addEventListener(e,ev=>{if(ev.target.closest&&ev.target.closest('#snd'))return;play()}));
@@ -762,20 +733,17 @@ function upd(){
  /* where the bottom roll would sit with nothing unrolled and nothing pinned */
  const y0=lowRoll.getBoundingClientRect().bottom-U.h-U.pin+st;
  /* the roll unrolls 1:1 with scrolling, in place, until its bottom reaches the bottom of the screen; from then on the page scrolls along with it */
- /* dead zone: the roll stays closed until the "scroll to unravel" line has scrolled into view; only scrolling beyond that unrolls it */
- const uhB=$('#uh').getBoundingClientRect().bottom-U.h-U.pin+st,D=live?Math.max(0,Math.round(uhB+16-VH)):0,eff=Math.max(0,st-D);
- const room=Math.max(0,Math.min(H,VH-28-y0+D));
+ const room=Math.max(0,Math.min(H,VH-28-y0));
  /* furthest the page may scroll: when the last line (the disclaimer) sits just above the bottom edge, once the letter is fully open */
  const vb=sc4.lastElementChild.getBoundingClientRect().bottom,P=pinOn.matches&&live?room:0;
- const end=Math.max(H+D,vb+st-U.pin+(H-U.h)+P-VH+32);
+ const end=Math.max(H,vb+st-U.pin+(H-U.h)+P-VH+32);
  if(st>end+1){sc4.scrollTop=end;st=sc4.scrollTop}
- const h=Math.min(eff,H),pin=pinOn.matches&&live?Math.min(eff,room):0;
+ const h=Math.min(st,H),pin=pinOn.matches&&live?Math.min(st,room):0;
  U.h=h;U.pin=pin;shw.style.height=h+'px';
  document.body.classList.toggle('sc',st>20);
  sc4.style.setProperty('--pin',pin+'px');
  $('#uh').style.opacity=h>2?0:1;
  const mr=$('#more');if(mr)mr.hidden=!(document.body.dataset.step==='4'&&live&&st<20&&lowRoll.getBoundingClientRect().top>VH-24)}
-(()=>{const m=document.createElement('meta');m.name='theme-color';const tc=()=>{const r=document.documentElement,t=r.dataset.theme,d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);if(document.body.dataset.step==='2'&&matchMedia('(max-width:600px)').matches){m.content=d?'#240c17':'#ffffff';if(!m.isConnected)document.head.appendChild(m)}else m.remove()};new MutationObserver(tc).observe(document.body,{attributes:true,attributeFilter:['data-step']});new MutationObserver(tc).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});tc()})();
 sc4.addEventListener('scroll',upd,{passive:true});$('#more').onclick=()=>sc4.scrollBy({top:pinOn.matches?Math.round(sc4.clientHeight*.8):Math.max(120,Math.round(topRoll.getBoundingClientRect().top-sc4.clientHeight*.3)),behavior:calm?'auto':'smooth'});addEventListener('resize',upd);
 document.querySelectorAll('.opt').forEach(o=>o.addEventListener('keydown',e=>{if(e.target===o&&(e.key==='Enter'||e.key===' ')){e.preventDefault();o.click()}}));
 
