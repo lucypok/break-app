@@ -437,6 +437,14 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 @keyframes twblink{50%{opacity:0}}
 .pill input:focus~.tw,.pill input:not(:placeholder-shown)~.tw{display:none}
 @media (prefers-reduced-motion:reduce){.pill .tw{animation:none}}
+/* laptop: popup paragraph a little larger and more spread out */
+@media (min-width:900px){
+.card{width:min(92vw,29rem)}
+.card .txt{font-size:1.15rem;line-height:1.7}
+.card .lb{display:block}
+}
+/* laptop: first-screen title a touch higher */
+@media (min-width:900px){#s1 h1{top:calc(clamp(.8rem,4vh,2rem) - .5rem)}}
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
 if(v!=='light'&&v!=='dark'){var h=new Date().getHours();v=(h>=19||h<7)?'dark':'light'}
@@ -531,7 +539,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
   <svg class="crack" viewBox="0 0 38 34" aria-hidden="true"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#1a1a1a"/><path d="M19 6L16 13L21 17L16 24L19 31" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
   <p class="hey" id="popH"><span class="hh">Hey,</span><br>Do you remember if</p>
   <p class="chipline"><span class="yy">you</span><span class="chip">Accepted all</span><span class="qm">?</span></p>
-  <p class="txt" style="margin-bottom:.7rem;text-wrap:balance">Well, <i>they</i> - the <b>apps</b> and <b>websites</b> certainly do.</p><p class="txt">And like a toxic ex, they might:<br><b>follow where you go,</b><br><b>read all your messages,</b><br><b>keep your pictures,</b><br><b>keep messaging you</b> with ads,<br><b>make it hard to leave</b><br>and much more you might<br>not even know about…</p>
+  <p class="txt" style="margin-bottom:.7rem;text-wrap:balance">Well, <i>they</i> - the <b style="font-weight:600">apps</b> and <b style="font-weight:600">websites</b> <span class="lb">certainly do.</span></p><p class="txt">Like a <b style="font-weight:600">toxic ex</b>, they might:<br>follow where you go,<br>read all your messages,<br>keep your pictures,<br>keep messaging you,<br>make it hard to leave<br>and much more you might<br>not even know about…</p>
   <p class="txt">But there is <button class="way" id="way">a way out</button>.</p>
  </div>
 </div>
