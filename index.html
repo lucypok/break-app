@@ -421,6 +421,22 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 :root:not([data-theme="dark"]) #s1 h1 .out{-webkit-text-stroke-width:.06em}
 }
 @media (max-width:600px){.card .chipline{top:-.3rem;margin-bottom:1.05rem}.card .chipline .chip{font-size:1.25rem;padding:.11em .4em .15em;border-radius:9px}}
+/* example text under the search bar */
+.pill .eg{position:absolute;left:0;right:0;top:calc(100% + .5rem);margin:0;text-align:center;color:var(--hot);font-size:.85rem;line-height:1.2;pointer-events:none}
+#s1 .disc{margin-top:2.3rem}
+/* phone: smaller bar text, no example line */
+@media (max-width:600px){.pill input::placeholder{font-size:.85rem}.pill .eg{display:none}#s1 .disc{margin-top:2rem;font-size:min(.65rem,2.9vw)}}
+/* laptop: the example is part of the placeholder text itself (set in the script), so no line underneath */
+@media (min-width:900px){
+.pill input::placeholder{font-size:.92rem}
+.pill .eg{display:none}
+#s1 .disc{margin-top:.9rem}
+}
+/* blinking typewriter line in the empty search bar */
+.pill .tw{position:absolute;left:1.3rem;top:50%;width:2px;height:1.3rem;margin-top:-.65rem;background:var(--btnink);animation:twblink 1s steps(1) infinite;pointer-events:none}
+@keyframes twblink{50%{opacity:0}}
+.pill input:focus~.tw,.pill input:not(:placeholder-shown)~.tw{display:none}
+@media (prefers-reduced-motion:reduce){.pill .tw{animation:none}}
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
 if(v!=='light'&&v!=='dark'){var h=new Date().getHours();v=(h>=19||h<7)?'dark':'light'}
@@ -449,7 +465,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
 
  <section class="screen" id="s1">
   <h1><span class="big">Who are you</span><span class="mid out">breaking-app</span><span class="sm in">with today?</span></h1>
-  <form class="pill" id="f" novalidate><input id="u" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="App or website name" placeholder="Paste app/website name"><button aria-label="Break up"><svg width="38" height="34" viewBox="0 0 38 34"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#000"/></svg></button></form>
+  <form class="pill" id="f" novalidate><input id="u" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="App or website name" placeholder="Paste or write that app/website"><button aria-label="Break up"><svg width="38" height="34" viewBox="0 0 38 34"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#000"/></svg></button><span class="tw" aria-hidden="true"></span><span class="eg" aria-hidden="true">ex. Instagram</span></form>
   <p class="err" id="err" role="alert"></p>
   <p class="disc"><span class="l1">We can’t cover every app’s terms<span class="tc"> &amp; conditions</span>, so please</span> <span style="white-space:nowrap">read them yourself.</span></p>
  </section>
@@ -515,7 +531,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
   <svg class="crack" viewBox="0 0 38 34" aria-hidden="true"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z" fill="#1a1a1a"/><path d="M19 6L16 13L21 17L16 24L19 31" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
   <p class="hey" id="popH"><span class="hh">Hey,</span><br>Do you remember if</p>
   <p class="chipline"><span class="yy">you</span><span class="chip">Accepted all</span><span class="qm">?</span></p>
-  <p class="txt" style="margin-bottom:.7rem">Well, <i>they</i> certainly do.</p><p class="txt">And like a toxic ex, they might:<br><b>follow where you go,</b><br><b>read all your messages,</b><br><b>keep your pictures,</b><br><b>keep messaging you</b> with ads,<br><b>make it hard to leave</b><br>and much more you might<br>not even know about…</p>
+  <p class="txt" style="margin-bottom:.7rem;text-wrap:balance">Well, <i>they</i> - the <b>apps</b> and <b>websites</b> certainly do.</p><p class="txt">And like a toxic ex, they might:<br><b>follow where you go,</b><br><b>read all your messages,</b><br><b>keep your pictures,</b><br><b>keep messaging you</b> with ads,<br><b>make it hard to leave</b><br>and much more you might<br>not even know about…</p>
   <p class="txt">But there is <button class="way" id="way">a way out</button>.</p>
  </div>
 </div>
@@ -765,4 +781,5 @@ const paint=()=>{const d=cur()==='dark';b.innerHTML=d?SUN:MOON;b.setAttribute('a
 
 b.onclick=()=>{const n=cur()==='dark'?'light':'dark';r.dataset.theme=n;try{sessionStorage.setItem('bofTheme',n)}catch(e){}paint()};
 mq.addEventListener('change',paint);paint()})();
+(()=>{const i=document.getElementById('u'),m=matchMedia('(min-width:900px)'),b='Paste or write that app/website';const f=()=>{i.placeholder=m.matches?b+' (ex. instagram)':b};f();m.addEventListener('change',f)})();
 </script></body></html>
