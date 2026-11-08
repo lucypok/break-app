@@ -76,7 +76,7 @@ h1 span,h2 span{display:block}
 pre{max-width:min(90vw,40rem);margin:1.4rem 0 0;padding:1.1rem 1.3rem;background:var(--btn);color:#333;border:1px solid #000;border-radius:14px;font:inherit;font-size:.92rem;line-height:1.5;text-align:left;white-space:pre-wrap;max-height:34vh;overflow:auto}
 .row{display:flex;gap:1rem;margin-top:1.3rem;flex-wrap:wrap;justify-content:center}
 .btn.s{font-size:1.05rem;padding:.45em 1.1em;border-radius:999px}
-.foot{position:absolute;bottom:calc(2.5rem + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:"Playball",cursive;font-size:1rem;opacity:.7;z-index:2}
+.foot{position:absolute;bottom:calc(2.5rem + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-family:"Lora",Georgia,serif;font-size:.9rem;opacity:.7;z-index:2}
 .foot a{color:inherit;text-decoration:none}
 @media (max-width:700px){.heart{top:50.7%;width:152vw}}
 @media (prefers-reduced-motion:reduce){.half,.br{transition:none}.fall .l,.fall .r,.box,.shake,.rebuild .half{animation-duration:.01s}}
@@ -380,6 +380,8 @@ body[data-step="2"] .foot:not(.fi){display:none}
 body[data-step="2"]:not(.pop-on) #who2 .ch{animation:twr .45s ease both;animation-delay:calc(var(--i,0)*24ms)}
 body[data-step="2"].pop-on #who2 .ch{opacity:0}
 }
+/* laptop only: the screen-2 line a little bigger */
+@media (min-width:900px){#s2 .who{font-size:1.2rem;max-width:40rem}}
 /* laptop only: search bar a tiny bit higher */
 @media (min-width:900px){#s1 .pill{top:-.3rem}#s1 .disc{top:-2.1rem}
 /* "You + app: status" lines get the same weight as the lead text on the letter screen */
@@ -426,6 +428,8 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 #s1 .disc{margin-top:2.3rem}
 /* phone: smaller bar text, no example line */
 @media (max-width:600px){.pill input::placeholder{font-size:.85rem}.pill .eg{display:none}#s1 .disc{margin-top:2rem;font-size:min(.65rem,2.9vw)}}
+/* phone: the "We can’t cover every app’s terms" line a bit bigger */
+@media (max-width:600px){#s1 .disc{font-size:min(.82rem,3.6vw);max-width:86vw;width:auto}}
 /* laptop: the example is part of the placeholder text itself (set in the script), so no line underneath */
 @media (min-width:900px){
 .pill input::placeholder{font-size:.92rem}
@@ -489,7 +493,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
    <div class="opt" role="button" tabindex="0" data-s="4"><b>Broken up</b><span>You’re leaving. Delete your account and your data.</span><span class="law">Right to erasure (<a href="https://gdpr-info.eu/art-17-gdpr/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Art. 17</a>) <svg class="lh" viewBox="0 0 38 34" aria-hidden="true"><path d="M19 33C5 22 1 15 1 10 1 4.500 5 1 10 1c4 0 7.500 2.500 9 6 1.500-3.500 5-6 9-6 5 0 9 3.500 9 9 0 5-4 12-18 23z"/></svg> “Right to be forgotten”</span></div>
   </div>
   <p class="err" id="optnote" role="status"></p>
-  <div class="foot fi"><a href="https://www.bitsoffreedom.nl/en/" target="_blank" rel="noopener">Bits of Freedom</a></div>
+  <div class="foot fi">© Break-App</div>
  </section>
 
  <section class="screen" id="sg">
@@ -532,7 +536,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
   <div class="where" id="where" hidden></div>
   <div class="scroll" id="scroll"><div class="roll"></div><div class="sheetwrap"><div class="sheetin"><pre id="letter"></pre></div></div><div class="roll"></div><p class="uh" id="uh">scroll to unravel the letter</p></div>
   <div class="row"><button class="btn s" id="cp">Copy letter</button><button class="btn s" id="again">Try another app</button></div>
-  <div class="foot f4"><a href="https://www.bitsoffreedom.nl/en/" target="_blank" rel="noopener">Bits of Freedom</a></div>
+  <div class="foot f4">© Break-App</div>
  </section>
  <div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="popH">
  <div class="card">
@@ -540,7 +544,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
   <p class="hey" id="popH"><span class="hh">Hey,</span><br>Do you remember if</p>
   <p class="chipline"><span class="yy">you</span><span class="chip">Accepted all</span><span class="qm">?</span></p>
   <p class="txt" style="margin-bottom:.7rem;text-wrap:balance">Well, <i>they</i> - the <b style="font-weight:600">apps</b> and <b style="font-weight:600">websites</b> <span class="lb">certainly do.</span></p><p class="txt">Like a <b style="font-weight:600">toxic ex</b>, they might:<br>follow where you go,<br>read all your messages,<br>keep your pictures,<br>keep messaging you,<br>make it hard to leave<br>and much more you might<br>not even know about…</p>
-  <p class="txt">But there is <button class="way" id="way">a way out</button>.</p>
+  <p class="txt">But there is <button class="way" id="way">a way out</button>.<br>Time to Break-App.</p>
  </div>
 </div>
 <button class="fbtn" id="fbtn" aria-label="Try other fonts" aria-expanded="false">Aa</button>
@@ -549,7 +553,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
  <button class="more" id="more" hidden aria-label="Scroll down to see your letter"><span>Your letter is below</span><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
  <button class="snd" id="snd" aria-label="Play heartbeat"></button>
  <button class="thm" id="theme" aria-label="Switch theme"></button>
- <div class="foot"><a href="https://www.bitsoffreedom.nl/en/" target="_blank" rel="noopener">Bits of Freedom</a></div>
+ <div class="foot">© Break-App</div>
 </main>
 <script>
 const $=s=>document.querySelector(s),h=$('#heart');
@@ -576,7 +580,7 @@ const fp=$('#fp'),fs=document.head.appendChild(document.createElement('style'));
 try{fh=localStorage.getItem('bofH')||fh;fb=localStorage.getItem('bofB')||fb}catch(e){}
 const mk=(l,k)=>l.map(f=>`<button data-k='${k}' data-f='${f}' style='font-family:${f}'>${f}</button>`).join('');
 fp.innerHTML='<p>Headline font</p>'+mk(HF,'h')+'<p>Text font</p>'+mk(BF,'b');
-const applyF=()=>{fs.textContent=`h1,h2,.opt b,.foot,.where h3,#letter{font-family:'${fh}',cursive!important}.who,.lead,pre,.err,.hint,.opt span,.where p,.disc,.eg{font-family:'${fb}',Georgia,serif!important}`;
+const applyF=()=>{fs.textContent=`h1,h2,.opt b,.where h3,#letter{font-family:'${fh}',cursive!important}.who,.lead,pre,.err,.hint,.opt span,.where p,.disc,.eg,.foot{font-family:'${fb}',Georgia,serif!important}`;
  fp.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.f===(b.dataset.k==='h'?fh:fb)));
  try{localStorage.setItem('bofH',fh);localStorage.setItem('bofB',fb)}catch(e){}};
 fp.onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.k==='h')fh=b.dataset.f;else fb=b.dataset.f;applyF();setTimeout(arc,150);setTimeout(arc,900)};
@@ -739,11 +743,12 @@ const yes=document.querySelector('[data-a=yes]'),peek=on=>{if(!yes.disabled)boxO
 ['mouseenter','focus'].forEach(e=>yes.addEventListener(e,()=>peek(true)));['mouseleave','blur'].forEach(e=>yes.addEventListener(e,()=>peek(false)));
 $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#letter').textContent);$('#cp').textContent='Copied'}catch(e){const r=document.createRange();r.selectNodeContents($('#letter'));getSelection().removeAllRanges();getSelection().addRange(r);$('#cp').textContent='Selected, press copy'}setTimeout(()=>$('#cp').textContent='Copy letter',2200)};
 $('#again').onclick=()=>{gap(-.6);wi=0;pc=0;wel.textContent=words[0];xw();h.classList.remove('fall','cracked','c1','c2','c3','peek');h.classList.add('rebuild');$('#u').value='';step(1);setTimeout(()=>h.classList.remove('rebuild'),1100);$('#u').focus()};
-const pop=$('#pop'),way=$('#way');
-const showPop=()=>{document.body.classList.add('pop-on');setTimeout(()=>way.focus({preventScroll:true}),450)},hidePop=()=>{document.body.classList.remove('pop-on')};
+const pop=$('#pop'),way=$('#way'),kb=matchMedia('(hover:hover) and (pointer:fine)');
+const showPop=()=>{document.body.classList.add('pop-on');setTimeout(()=>way.focus({preventScroll:true}),450)},hidePop=()=>{document.body.classList.remove('pop-on');if(kb.matches&&document.body.dataset.step==='1')$('#u').focus({preventScroll:true})};
 way.onclick=hidePop;pop.addEventListener('click',e=>{if(e.target===pop)hidePop()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('pop-on'))hidePop()});
 setTimeout(()=>{if(document.body.dataset.step==='1')showPop()},1200);
+addEventListener('keydown',e=>{const b=document.body;if(!kb.matches||b.dataset.step!=='1'||b.classList.contains('pop-on')||e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1)return;const i=$('#u');if(document.activeElement===i||/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName))return;i.focus({preventScroll:true})});
 const sc4=$('#s4'),shw=document.querySelector('.sheetwrap'),ltr=$('#letter'),pinOn={matches:true};
 const lowRoll=document.querySelectorAll('#scroll .roll')[1],U={h:0,pin:0,open:false};
 const topRoll=document.querySelector('#scroll .roll');
