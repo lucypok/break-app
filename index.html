@@ -120,9 +120,9 @@ body.pop-on .card{transform:none}
 .chip{display:inline-block;background:#f06fbd;border:1px solid #000;border-radius:10px;padding:.1em .6em .15em;font:400 1.2rem/1.25 "Inter","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1a1a1a}
 .qm{font:400 1.9rem/1.05 "Playball",cursive}
 .card .txt{margin-bottom:1rem}.card .txt:last-child{margin-bottom:0}
-.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.22em;cursor:pointer}
+.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:.22em;cursor:pointer}
 .way:focus-visible{outline:0}
-@media (hover:hover){.way:hover{color:var(--hot)}}
+@media (hover:hover){.way:hover{color:var(--hot)}body.pop-on .way{animation:wayul .9s ease 4s forwards}@keyframes wayul{to{text-decoration-color:currentColor}}}
 @media (prefers-reduced-motion:reduce){.card{transform:none;transition:none}.pop{transition:none}}
 .scroll{display:flex;flex-direction:column;align-items:center;width:min(88vw,34rem);margin-top:1.3rem}
 .scroll[hidden]{display:none}
@@ -382,7 +382,7 @@ body[data-step="2"]:not(.pop-on) #who2 .ch{animation:twr .45s ease both;animatio
 body[data-step="2"].pop-on #who2 .ch{opacity:0}
 }
 /* laptop only: the screen-2 line a little bigger */
-@media (min-width:900px){#s2 .who{font-size:1rem;max-width:40rem;top:-.8rem}}
+@media (min-width:900px){#s2 .who{font-size:1.2rem;max-width:40rem;top:.3rem;margin-bottom:.4rem}}
 /* laptop only: search bar a tiny bit higher */
 @media (min-width:900px){#s1 .pill{top:-.3rem}#s1 .disc{top:-2.1rem}
 /* "You + app: status" lines get the same weight as the lead text on the letter screen */
@@ -750,7 +750,8 @@ function boxOpen(on,instant,part){
  const bx=document.getElementById('box'),L=document.getElementById('fl'),R=document.getElementById('fr'),S=window.__bx||(window.__bx={t:0,r:0});
  const A=[34,104],G=[86,70],B=[150,112],E=[202,78],vL=[58,4],wL=[-34,-38],vR=[-58,-4],wR=[34,-38];
  const lp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t],pts=(p,q,v)=>[p,[p[0]+v[0],p[1]+v[1]],[q[0]+v[0],q[1]+v[1]],q].join(' ');
- const set=t=>{L.setAttribute('points',pts(A,G,lp(vL,wL,t)));R.setAttribute('points',pts(B,E,lp(vR,wR,t)));L.classList.toggle('in',t>.63);R.classList.toggle('in',t>.63)};
+ const set=t=>{L.setAttribute('points',pts(A,G,lp(vL,wL,t)));R.setAttribute('points',pts(B,E,lp(vR,wR,t)));L.classList.toggle('in',t>.63);R.classList.toggle('in',t>.63);
+  const bk=t>.63;if(S.bk!==bk){S.bk=bk;const pp=bx.querySelector('.pp'),tp=bx.querySelector('.tape-top');[L,R].forEach(e=>bk?pp.parentNode.insertBefore(e,pp):tp.parentNode.insertBefore(e,tp))}};
  const tg=part!=null?part:(on?1:0);cancelAnimationFrame(S.r);bx.classList.toggle('open',tg===1);bx.classList.toggle('peek',tg>0&&tg<1);
  if(instant||matchMedia('(prefers-reduced-motion:reduce)').matches){S.t=tg;set(S.t);return}
  const t0=performance.now(),from=S.t,to=tg,k=tg===1?1.5:0,dur=tg===1?700:320,ez=u=>1+(k+1)*Math.pow(u-1,3)+k*Math.pow(u-1,2);
