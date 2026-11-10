@@ -120,7 +120,7 @@ body.pop-on .card{transform:none}
 .chip{display:inline-block;background:#f06fbd;border:1px solid #000;border-radius:10px;padding:.1em .6em .15em;font:400 1.2rem/1.25 "Inter","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1a1a1a}
 .qm{font:400 1.9rem/1.05 "Playball",cursive}
 .card .txt{margin-bottom:1rem}.card .txt:last-child{margin-bottom:0}
-.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;cursor:pointer}
+.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.22em;cursor:pointer}
 .way:focus-visible{outline:0}
 @media (hover:hover){.way:hover{color:var(--hot)}}
 @media (prefers-reduced-motion:reduce){.card{transform:none;transition:none}.pop{transition:none}}
@@ -143,6 +143,7 @@ body[data-step="4"] .sheetwrap{grid-template-rows:1fr}
 #letter{max-height:none;overflow:visible}
 .uh{position:absolute;top:100%;left:0;right:0;margin:.6rem 0 0;font:1rem "Playball",cursive;color:#ff5c9a;transition:opacity .4s}
 #guide{max-height:46vh;overflow:auto;margin:1.4rem 0 1.4rem}
+.where ul{text-align:left;margin:.3rem 0 .7rem;padding-left:1.15rem}.where li{margin:.3rem 0;line-height:1.4}.where li::marker{color:#e0357f}.where li a,#guide p a{color:#e0357f;text-decoration:underline}
 #who,#whog{opacity:1;color:#fff;text-shadow:0 1px 3px rgba(190,50,100,.45)}
 #s2 h2{margin-top:-.25em;position:relative;top:.4rem}#s2 h2 .mid{font-size:clamp(2.7rem,7.7vw,6.2rem)}#s2 h2 .sm{font-size:clamp(2.5rem,6.9vw,5.6rem)}#s2 .opts{margin-top:1.8rem}
 #s2 .who{margin-bottom:0;opacity:1;color:#fff;text-shadow:0 1px 3px rgba(190,50,100,.45);font-size:min(1rem,3.5vw);font-weight:700;-webkit-text-stroke:.4px currentColor;line-height:1.5;max-width:30rem;margin-bottom:.4rem}
@@ -197,7 +198,7 @@ body:not([data-step="1"]) .bk{display:grid}
 .law a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .src{margin:.9rem 0 0;font-size:.9rem;opacity:.9}.src a{color:inherit;text-underline-offset:2px}
 .card .hey .hh{font-size:2.3rem;line-height:.92}body[data-step="4"] .foot:not(.f4){display:none}.foot.f4{position:static;width:100%;margin-top:2.4rem;opacity:.7;pointer-events:auto}body.sc .foot.f4{opacity:.7;pointer-events:auto}.where .fine{font-size:.74rem}.pill{position:relative;top:.1rem}h1{line-height:.91}h1 .in{margin-top:.06em}.ch{display:inline-block}.wd{display:inline-block;white-space:nowrap}
-.where a{font-size:.8em}.where p{margin:.1rem 0 .25rem}.where .fine{margin-top:.7rem}
+.where a{font-size:.8em}.where a.il,#guide a.il,.where li a.il,#guide li a.il,.where p a.il,#guide p a.il{font-size:inherit;color:inherit;text-decoration:underline;text-underline-offset:.18em}.where p{margin:.1rem 0 .25rem}.where .fine{margin-top:.7rem}
 .where h3{margin-top:1.1rem}.where h3:first-child{margin-top:.2rem}
 .thm{position:absolute;top:calc(1rem + env(safe-area-inset-top,0px));right:4.3rem;z-index:30;width:2.8rem;height:2.8rem;padding:0;display:grid;place-items:center;background:var(--btn);border:1px solid #000;border-radius:999px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .thm svg{width:22px;height:22px;pointer-events:none}.thm:focus-visible{outline:2px solid #000;outline-offset:3px}
@@ -381,7 +382,7 @@ body[data-step="2"]:not(.pop-on) #who2 .ch{animation:twr .45s ease both;animatio
 body[data-step="2"].pop-on #who2 .ch{opacity:0}
 }
 /* laptop only: the screen-2 line a little bigger */
-@media (min-width:900px){#s2 .who{font-size:1.2rem;max-width:40rem}}
+@media (min-width:900px){#s2 .who{font-size:1rem;max-width:40rem;top:-.8rem}}
 /* laptop only: search bar a tiny bit higher */
 @media (min-width:900px){#s1 .pill{top:-.3rem}#s1 .disc{top:-2.1rem}
 /* "You + app: status" lines get the same weight as the lead text on the letter screen */
@@ -544,7 +545,7 @@ document.documentElement.setAttribute('data-theme',v)})()</script>
   <p class="hey" id="popH"><span class="hh">Hey,</span><br>Do you remember if</p>
   <p class="chipline"><span class="yy">you</span><span class="chip">Accepted all</span><span class="qm">?</span></p>
   <p class="txt" style="margin-bottom:.7rem;text-wrap:balance">Well, <i>they</i> - the <b style="font-weight:600">apps</b> and <b style="font-weight:600">websites</b> <span class="lb">certainly do.</span></p><p class="txt">Like a <b style="font-weight:600">toxic ex</b>, they might:<br>follow where you go,<br>read all your messages,<br>keep your pictures,<br>keep messaging you,<br>make it hard to leave<br>and much more you might<br>not even know about…</p>
-  <p class="txt">But there is <button class="way" id="way">a way out</button>.<br>Time to Break-App.</p>
+  <p class="txt">But there is a way to <button class="way" id="way">change it</button>.<br>Time to Break-App.</p>
  </div>
 </div>
 <button class="fbtn" id="fbtn" aria-label="Try other fonts" aria-expanded="false">Aa</button>
@@ -633,23 +634,31 @@ GL.discord={s:'In Discord: User Settings → Data & Privacy → Request Data (on
 GL.linkedin={s:'LinkedIn says you can download a copy of your personal data from your Settings & Privacy page.',c:'LinkedIn has a privacy site. Look there and in its privacy policy for how to contact it, and use that for your letter.',l:[['LinkedIn: download your data','https://www.linkedin.com/help/linkedin/answer/a1340649'],['LinkedIn privacy','https://privacy.linkedin.com/settings'],['LinkedIn: close your account','https://www.linkedin.com/help/learning/answer/63']],g:{4:'In Account preferences, under Account management, click Change next to Close account, give a reason, enter your password and click Close account. LinkedIn says you’ll lose access to your connections and everything you added, your profile won’t be visible, and you’ll lose your recommendations and endorsements. It suggests downloading a copy of your data first.'},v:'2 Nov 2026'};
 GL.tinder={s:'On the web: go to account.gotinder.com/data, log in, choose Download My Information and enter the email for the link. It covers your profile, preferences, photos and message activity. Do it first: once the account is deleted you can’t use the tool.',c:'If you’ve already deleted your account or can’t sign in, Tinder has a privacy request form, linked from its help centre. Use it for your letter.',l:[['Tinder: request a copy of your personal data','https://www.help.tinder.com/hc/en-gb/articles/115005626726-How-do-I-request-a-copy-of-my-personal-data'],['Tinder’s Manage My Account tool','https://account.gotinder.com/']],g:{4:'In the app: profile icon → Settings → scroll to the bottom → Delete account → Delete my account (“Pause” only hides you). Or use the Manage My Account tool on the web. Also cancel any paid subscription yourself, especially if you pay through the App Store or Google Play.'}};
 GL.netflix={s:'Netflix’s help center has an article called “What personal information Netflix holds about you and how to request a copy”, under Privacy and Security.',c:'Netflix’s help pages list privacy@netflix.com for deletion requests and for people who didn’t finish signing up. Use it for your letter.',l:[['Netflix help: privacy and security','https://help.netflix.com/node/100628'],['Netflix help: deleting your account','https://help.netflix.com/node/126558']],g:{2:'Netflix’s Privacy and Security help page has a section called “How to stop certain uses of your personal information”. The footer of its pages also links to Ad Choices, Cookie Preferences and “Do Not Sell or Share My Personal Information”.',4:'Netflix’s help page says cancelled accounts are deleted automatically after a set period, and that you can ask for earlier deletion. The page showed 10 months in one version and 24 in another, so check the current number there.'},v:'2 Nov 2026'};
-GL.amazon={s:'Amazon has a “Request My Data” page. Audible’s help says to open it, sign in, pick the data category and submit your request.',l:[],g:{4:'Amazon’s “Close Your Amazon Account” page: sign in, review the services tied to your account, tick the box saying you want to permanently close it and delete your data, and select Close my account. Amazon sends a confirmation by email or text, and you have 5 days to reply. It closes your account on every Amazon site that uses the same login. Audible says you can’t delete your Audible data without also closing your Amazon account.'},v:'2 Nov 2026'};
+GL.amazon={s:'Amazon has a “Request My Data” page. Audible’s help says to open it, sign in, pick the data category and submit your request.',l:[['Amazon: Close Your Amazon Account','https://www.amazon.com/privacy/data-deletion']],g:{2:['Open Amazon’s [[Interest-Based Ads|https://digprjsurvey.amazon.co.uk/csad/help/node/G64JFZVFDY66XG9K]] notice and follow its link to Advertising Preferences. You can also find it in the Amazon app under Your Ads Privacy Choices.','Choose not to see interest-based ads from Amazon, then submit.','Optional: on the same page you can also delete personal information from Amazon’s advertising systems. Do both: deleting alone doesn’t switch personalisation off.','Good to know: you’ll still see ads, just less relevant ones. If you’re signed out, the choice may only apply to that browser.','For ads from other networks around the web, use the opt-out on [[YourOnlineChoices|https://www.youronlinechoices.com/]].'],4:['Open Amazon’s [[Close Your Amazon Account|https://www.amazon.com/privacy/data-deletion]] page and sign in.','Review the services tied to your account.','Tick the box saying you want to permanently close your account and delete your data.','Select Close my account.','Amazon sends a confirmation by email or text. You have 5 days to reply.','Good to know: it closes your account on every Amazon site that uses the same login.','Audible says you can’t delete your Audible data without also closing your Amazon account.']},v:'10 Nov 2026'};
 GL.bol={l:[]};
 GL.google.l.push(['Delete your Google Account','https://support.google.com/accounts/answer/32046'],['Remove Gmail from your Google Account','https://support.google.com/mail/answer/61177']);
 GL.meta.v='2 Nov 2026';GL.meta.u={2:1};
+GL.instagram=Object.assign({},GL.meta,{u:{2:1},l:[['Instagram: delete your account','https://help.instagram.com/android-app/139886812848894']].concat(GL.meta.l),g:Object.assign({},GL.meta.g,{4:['Download your data first: Settings → Accounts Center → Your information and permissions → Download your information.','Open Settings → Accounts Center → Personal details → Account ownership and control → [[Deactivation or deletion|https://help.instagram.com/android-app/139886812848894]], choose your account and select Delete account. Pick a reason and enter your password to confirm.','Good to know: deletion isn’t instant. You get 30 days to change your mind (don’t log back in if you mean it), and it can take longer before everything is gone.','Not ready? Deactivate only hides your profile until you log back in. It is not deletion.']})});
 GL.whatsapp={s:'In the app: Settings → Account → Request account info.',c:'WhatsApp has a form for privacy rights requests. Use it for your letter.',l:[['WhatsApp privacy rights form','https://www.whatsapp.com/contact/forms/719247716111973?lang=en_US']],g:{4:'In the app: Settings → Account → Delete my account.'},v:'2 Nov 2026'};
-GL.canva.v='2 Nov 2026';
+GL.canva.v='2 Nov 2026';GL.canva.e='privacy@canva.com';
+GL.hinge={s:'In the app: your Photo icon → Account Settings → Download My Data → pick your country → Download My Data again → confirm your email → Submit. Hinge says exports are usually ready within 30 days and stay available for only 48 hours. They leave out information about other members.',c:'Hinge takes privacy requests through its Help Center request form: choose “Privacy Request” as the topic. Use it for your letter, also if you already closed your account.',l:[['Hinge: how to request a copy of your personal data','https://help.hinge.co/hc/en-us/articles/360011235813-How-do-I-request-a-copy-of-my-personal-data'],['Hinge: how do I delete my account','https://help.hinge.co/hc/en-us/articles/115004020968-How-do-I-delete-my-account']],f:'https://help.hinge.co/hc/en-us/articles/360011235813-How-do-I-request-a-copy-of-my-personal-data',g:{4:['Download your data first: once your account is deleted you can’t use the in-app tool.','Tap your Photo icon → Settings → Delete Account, then confirm.','Uninstalling the app does not delete your account.','If you pay for Hinge+ or HingeX, check the billing yourself: deleting the app doesn’t cancel a store subscription.','Hinge may keep some data after deletion. Say in your letter that you want everything erased, including safety and interaction data.']},v:'10 Nov 2026'};
+GL.tinder.g[2]='Tinder’s help centre says it uses information about you to show ads on and off its service, and its privacy policy has the details. Switch off marketing emails and notifications under Settings → Notifications. On an iPhone, also open Settings → Privacy & Security → Tracking and switch Tinder off. I couldn’t confirm a single “no personalised ads” switch in the app, so your letter is the surest way.';GL.tinder.u={2:0};GL.tinder.v='10 Nov 2026';
+GL.tinder.f='https://www.help.tinder.com/hc/en-us/articles/5349453268877';
+GL.meta.f=GL.instagram.f='https://www.facebook.com/help/contact/540977946302970';
+GL.discord.e='privacy@discord.com';GL.netflix.e='privacy@netflix.com';
 GL.google.s='Go to takeout.google.com, sign in and choose what to export.';GL.google.c=null;
 GL.google.g={4:'Go to myaccount.google.com → Data & privacy → “Download or delete your data”. “Delete a Google service” removes one service such as Gmail: Google says to download your data first, and you need an alternate email address that isn’t Gmail if you want to keep using your Google Account. “Delete your Google Account” deletes the whole account.'};
 GL.google.v='2 Nov 2026';
-const AL={netflix:'netflix',amazon:'amazon',bol:'bol',whatsapp:'whatsapp',instagram:'meta',facebook:'meta',fb:'meta',tiktok:'tiktok',canva:'canva',google:'google',youtube:'google',gmail:'google',chatgpt:'openai',openai:'openai',tumblr:'tumblr',snapchat:'snapchat',snap:'snapchat',x:'x',twitter:'x',reddit:'reddit',redd:'reddit',spotify:'spotify',discord:'discord',discordapp:'discord',linkedin:'linkedin',tinder:'tinder',gotinder:'tinder'};
+const AL={netflix:'netflix',amazon:'amazon',bol:'bol',whatsapp:'whatsapp',instagram:'instagram',facebook:'meta',fb:'meta',tiktok:'tiktok',canva:'canva',google:'google',youtube:'google',gmail:'google',chatgpt:'openai',openai:'openai',tumblr:'tumblr',snapchat:'snapchat',snap:'snapchat',x:'x',twitter:'x',reddit:'reddit',redd:'reddit',spotify:'spotify',discord:'discord',discordapp:'discord',linkedin:'linkedin',tinder:'tinder',gotinder:'tinder',hinge:'hinge'};
 const mkEl=(g,x,a)=>{const e=document.createElement(g);if(x)e.textContent=x;if(a)Object.assign(e,a);return e};
-const DG={1:'Look in the app’s settings for “download your data”, “request your information” or “privacy”. Many apps have a button for it.',2:'In the app’s settings, look under Privacy, Ads or Notifications. Switch off personalised ads, marketing emails and sharing data with partners. On an iPhone, also open Settings → Privacy & Security → Tracking and switch the app off.',3:'There is usually no switch for this: your letter is how you object. Fill in your reason where it says [explain why]. If they refuse, you can complain to your data protection authority (in the Netherlands, the Autoriteit Persoonsgegevens).',4:'In the app’s settings, look for “delete account”, often under Account. Deleting is usually permanent, so get your stuff back first.'};
+const DG={1:'Look in the app’s settings for “download your data”, “request your information” or “privacy”. Many apps have a button for it.',2:'In the app’s settings, look under Privacy, Ads or Notifications. Switch off personalised ads, marketing emails and sharing data with partners. On an iPhone, also open Settings → Privacy & Security → Tracking and switch the app off.',3:['There is usually no switch for this: your letter is how you object. You’ll get it next ;)','In the letter, fill in your reason where it says [explain why].','If they refuse, you can complain to your data protection authority (in the Netherlands, the [[Autoriteit Persoonsgegevens|https://www.autoriteitpersoonsgegevens.nl/nl/meldingsformulier-klachten]]). Contact the company first: the authority expects you to have tried that.'],4:'In the app’s settings, look for “delete account”, often under Account. Deleting is usually permanent, so get your stuff back first.'};
 const sld=h=>{const p=h.split('.');if(p.length<2)return p[0];let i=p.length-2;if(p.length>2&&p[p.length-1].length===2&&['co','com','org','net','ac','gov','edu'].includes(p[i]))i--;return p[i]};const appKey=()=>sld(host).toLowerCase();
 const SQ=x=>'https://duckduckgo.com/?q='+encodeURIComponent(name+' '+x);
 const part=(g,k)=>{const x=(k==='s'||k==='c')?g[k]:(g.g||{})[k];return g.v&&!(g.u&&g.u[k])&&x?x:null};
+const rich=(e,t)=>{t.split(/(\[\[.+?\|.+?\]\])/).forEach(z=>{const m=z.match(/^\[\[(.+?)\|(.+?)\]\]$/);if(m)e.append(mkEl('a',m[1],{href:m[2],target:'_blank',rel:'noopener',className:'il'}));else if(z)e.append(document.createTextNode(z))});return e};
 const sec=(w,h,x,topic)=>{w.append(mkEl('h3',h));
- if(x)w.append(mkEl('p',x));else{w.append(mkEl('p','I can’t be 100% sure about this for '+name+', so search for the current steps instead.'));const p=mkEl('p');p.append(mkEl('a','Search: '+name+' '+topic,{href:SQ(topic),target:'_blank',rel:'noopener'}));w.append(p)}};
+ if(Array.isArray(x)){const ul=mkEl('ul');x.forEach(t=>ul.append(rich(mkEl('li'),t)));w.append(ul)}
+ else if(x)w.append(rich(mkEl('p'),x));else{w.append(mkEl('p','I can’t be 100% sure about this for '+name+', so search for the current steps instead.'));const p=mkEl('p');p.append(mkEl('a','Search: '+name+' '+topic,{href:SQ(topic),target:'_blank',rel:'noopener'}));w.append(p)}};
 const where=(y,show)=>{const w=$('#where');w.replaceChildren();w.hidden=!show;if(!show)return;
  const g=GL[AL[appKey()]]||{};
  if(y)sec(w,'Get your stuff back',part(g,'s'),'download my personal data');
@@ -658,20 +667,29 @@ const where=(y,show)=>{const w=$('#where');w.replaceChildren();w.hidden=!show;if
  if(st===4)sec(w,'Delete your account',part(g,4),'delete account');
  sec(w,(y||st>1)?'Then send the letter':'Where to send it',part(g,'c'),'privacy contact data protection officer');
  if(g.v)(g.l||[]).forEach(x=>{const p=mkEl('p');p.append(mkEl('a',x[0],{href:x[1],target:'_blank',rel:'noopener'}));w.append(p)});
- w.append(mkEl('p','Steps and links change, so check the company’s current privacy policy too.'+(g.v?' Last checked '+g.v+'.':''),{className:'fine'}))};
+ if(g.f&&!g.e&&!(g.l||[]).some(x=>x[1]===g.f)){const p=mkEl('p');p.append(mkEl('a','Where to send your letter',{href:g.f,target:'_blank',rel:'noopener'}));w.append(p)}
+ w.append(mkEl('p','Steps and links change, so check the company’s current privacy policy too.'+(g.v?' Last checked '+g.v+'.':''),{className:'fine'}));linkApp(w)};
 const avail=()=>{const g=GL[AL[appKey()]]||{};$('#optnote').textContent='';
  document.querySelectorAll('.opt').forEach(b=>{const s=b.dataset.s,v=(g.o&&g.o[s])||'yes';b.classList.toggle('dim',v==='no');b.dataset.why=(g.n&&g.n[s])||'';
   const o=b.querySelector('.tag');if(o)o.remove();if(v==='limited')b.querySelector('b').append(mkEl('span','limited',{className:'tag'}))})};
 const GT={1:'to see what they know',2:'to set boundaries',3:'to object',4:'to leave'};
+const APPURL={netflix:'https://www.netflix.com',amazon:'https://www.amazon.com',bol:'https://www.bol.com',whatsapp:'https://www.whatsapp.com',instagram:'https://www.instagram.com',facebook:'https://www.facebook.com',fb:'https://www.facebook.com',meta:'https://www.meta.com',tiktok:'https://www.tiktok.com',canva:'https://www.canva.com',google:'https://www.google.com',youtube:'https://www.youtube.com',gmail:'https://mail.google.com',chatgpt:'https://chatgpt.com',openai:'https://openai.com',tumblr:'https://www.tumblr.com',snapchat:'https://www.snapchat.com',snap:'https://www.snapchat.com',x:'https://x.com',twitter:'https://x.com',reddit:'https://www.reddit.com',redd:'https://www.reddit.com',spotify:'https://www.spotify.com',discord:'https://discord.com',discordapp:'https://discord.com',linkedin:'https://www.linkedin.com',tinder:'https://tinder.com',gotinder:'https://tinder.com',hinge:'https://hinge.co'};
+const appHref=()=>APPURL[appKey()]||APPURL[AL[appKey()]]||('https://duckduckgo.com/?q='+encodeURIComponent(name));
+const linkApp=w=>{const re=/\bapp\b/i,hr=appHref(),tw=document.createTreeWalker(w,NodeFilter.SHOW_TEXT),L=[];
+ while(tw.nextNode()){const n=tw.currentNode;if(!n.parentElement.closest('a,.fine')&&re.test(n.nodeValue))L.push(n)}
+ L.forEach(n=>{const m=n.nodeValue.match(re),i=m.index,a=mkEl('a',m[0],{href:hr,target:'_blank',rel:'noopener',className:'il'});
+  n.parentNode.insertBefore(document.createTextNode(n.nodeValue.slice(0,i)),n);n.parentNode.insertBefore(a,n);n.nodeValue=n.nodeValue.slice(i+m[0].length)})};
 const guide=()=>{const g=GL[AL[appKey()]]||{},w=$('#guide');w.replaceChildren();
  const T={1:['See what they know','s','download my personal data'],2:['Change the settings',2,'turn off personalised ads and tracking settings'],3:['How to object',3,''],4:['Delete your account',4,'delete account']}[st];
  sec(w,T[0],st===3?DG[3]:part(g,T[1]),T[2]);
- w.append(mkEl('p','Steps change, so check the company’s current settings and privacy policy too.',{className:'fine'}))};
+ if(st===4&&g.v&&!(g.u&&g.u[4])&&(g.g||{})[4]&&!(g.g[4]+'').includes('[['))(g.l||[]).slice(0,1).forEach(x=>{const p=mkEl('p');p.append(mkEl('a',x[0],{href:x[1],target:'_blank',rel:'noopener'}));w.append(p)});
+ w.append(mkEl('p','Steps change, so check the company’s current settings and privacy policy too.',{className:'fine'}));
+ linkApp(w)};
 const done=y=>{const n=name,L=(st===1&&!y)?null:LT[st](y);
  $('#t3').textContent=st===4?(y?'Take your stuff.':'Clean break.'):TT[st];
  $('#lead').textContent=LD[st](n,y);
  {const lt=$('#letter');lt.textContent='';if(L){const sj=document.createElement('b');sj.className='sj';sj.textContent='Subject:';lt.append(sj,` ${L[0]}\n\nDear ${n} privacy team,\n\n${L[1]}\n\nYou have one month to reply.\n\nThank you,\n[your name and account email]`)}}
- $('#s4').classList.toggle('noletter',!L);$('#letter').hidden=!L;$('#scroll').hidden=!L;$('#cp').hidden=!L;where(y,!!L);
+ $('#s4').classList.toggle('noletter',!L);$('#letter').hidden=!L;$('#scroll').hidden=!L;$('#cp').hidden=!L;cpReset();where(y,!!L);
  if(st===4){h.classList.add('fall');fallT=setTimeout(()=>step(4),1500)}else step(4)};
 
 /* ---- match what people type: links, names, nicknames and small typos ---- */
@@ -741,11 +759,18 @@ yn.forEach(b=>b.onclick=()=>{if(b.dataset.a!=='yes'){done(false);return}
  yn.forEach(x=>x.disabled=true);boxOpen(true);setTimeout(()=>done(true),1250)});
 const yes=document.querySelector('[data-a=yes]'),peek=on=>{if(!yes.disabled)boxOpen(false,false,on?.24:0)};
 ['mouseenter','focus'].forEach(e=>yes.addEventListener(e,()=>peek(true)));['mouseleave','blur'].forEach(e=>yes.addEventListener(e,()=>peek(false)));
-$('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#letter').textContent);$('#cp').textContent='Copied'}catch(e){const r=document.createRange();r.selectNodeContents($('#letter'));getSelection().removeAllRanges();getSelection().addRange(r);$('#cp').textContent='Selected, press copy'}setTimeout(()=>$('#cp').textContent='Copy letter',2200)};
+let cpT;const G=()=>GL[AL[appKey()]]||{},formOnly=()=>G().f&&!G().e,sendLbl=()=>'Send!';const cpReset=()=>{clearTimeout(cpT);const b=$('#cp');b.dataset.m='copy';b.textContent='Copy letter'};
+$('#cp').onclick=async()=>{const b=$('#cp');
+ if(b.dataset.m==='send'){const g0=G();const t=$('#letter').textContent.replace(/^Subject:\s*/,''),k=t.indexOf('\n\n'),g=GL[AL[appKey()]]||{};
+  location.href='mailto:'+(g.e||'')+'?subject='+encodeURIComponent(t.slice(0,k))+'&body='+encodeURIComponent(t.slice(k+2));return}
+ clearTimeout(cpT);
+ try{await navigator.clipboard.writeText($('#letter').textContent);b.textContent='Copied ✓'}catch(e){const r=document.createRange();r.selectNodeContents($('#letter'));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent='Selected, press copy'}
+ b.dataset.m='copied';cpT=setTimeout(()=>{if(formOnly()){b.dataset.m='copy';b.textContent='Copy letter';return}b.dataset.m='send';b.textContent=sendLbl()},1500)};
 $('#again').onclick=()=>{gap(-.6);wi=0;pc=0;wel.textContent=words[0];xw();h.classList.remove('fall','cracked','c1','c2','c3','peek');h.classList.add('rebuild');$('#u').value='';step(1);setTimeout(()=>h.classList.remove('rebuild'),1100);$('#u').focus()};
 const pop=$('#pop'),way=$('#way'),kb=matchMedia('(hover:hover) and (pointer:fine)');
 const showPop=()=>{document.body.classList.add('pop-on');setTimeout(()=>way.focus({preventScroll:true}),450)},hidePop=()=>{document.body.classList.remove('pop-on');if(kb.matches&&document.body.dataset.step==='1')$('#u').focus({preventScroll:true})};
-way.onclick=hidePop;
+way.onclick=hidePop;/* the popup only closes via "a way out": no backdrop click, no Escape */
+addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('pop-on'))e.preventDefault()});
 setTimeout(()=>{if(document.body.dataset.step==='1')showPop()},1200);
 addEventListener('keydown',e=>{const b=document.body;if(!kb.matches||b.dataset.step!=='1'||b.classList.contains('pop-on')||e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1)return;const i=$('#u');if(document.activeElement===i||/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName))return;i.focus({preventScroll:true})});
 const sc4=$('#s4'),shw=document.querySelector('.sheetwrap'),ltr=$('#letter'),pinOn={matches:true};
