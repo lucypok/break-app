@@ -120,7 +120,7 @@ body.pop-on .card{transform:none}
 .chip{display:inline-block;background:#f06fbd;border:1px solid #000;border-radius:10px;padding:.1em .6em .15em;font:400 1.2rem/1.25 "Inter","Helvetica Neue",Helvetica,Arial,sans-serif;color:#1a1a1a}
 .qm{font:400 1.9rem/1.05 "Playball",cursive}
 .card .txt{margin-bottom:1rem}.card .txt:last-child{margin-bottom:0}
-.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.22em;cursor:pointer}
+.way{background:none;border:0;padding:0;font:inherit;font-weight:400;color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;cursor:pointer}
 .way:focus-visible{outline:0}
 @media (hover:hover){.way:hover{color:var(--hot)}}
 @media (prefers-reduced-motion:reduce){.card{transform:none;transition:none}.pop{transition:none}}
@@ -745,8 +745,7 @@ $('#cp').onclick=async()=>{try{await navigator.clipboard.writeText($('#letter').
 $('#again').onclick=()=>{gap(-.6);wi=0;pc=0;wel.textContent=words[0];xw();h.classList.remove('fall','cracked','c1','c2','c3','peek');h.classList.add('rebuild');$('#u').value='';step(1);setTimeout(()=>h.classList.remove('rebuild'),1100);$('#u').focus()};
 const pop=$('#pop'),way=$('#way'),kb=matchMedia('(hover:hover) and (pointer:fine)');
 const showPop=()=>{document.body.classList.add('pop-on');setTimeout(()=>way.focus({preventScroll:true}),450)},hidePop=()=>{document.body.classList.remove('pop-on');if(kb.matches&&document.body.dataset.step==='1')$('#u').focus({preventScroll:true})};
-way.onclick=hidePop;pop.addEventListener('click',e=>{if(e.target===pop)hidePop()});
-addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('pop-on'))hidePop()});
+way.onclick=hidePop;
 setTimeout(()=>{if(document.body.dataset.step==='1')showPop()},1200);
 addEventListener('keydown',e=>{const b=document.body;if(!kb.matches||b.dataset.step!=='1'||b.classList.contains('pop-on')||e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1)return;const i=$('#u');if(document.activeElement===i||/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName))return;i.focus({preventScroll:true})});
 const sc4=$('#s4'),shw=document.querySelector('.sheetwrap'),ltr=$('#letter'),pinOn={matches:true};
