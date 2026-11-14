@@ -452,10 +452,14 @@ body[data-step="2"] .orn .hr{animation:hr 1.7s .9s cubic-bezier(.2,.9,.3,1) both
 @media (min-width:900px){#s1 h1{top:calc(clamp(.8rem,4vh,2rem) - .5rem)}}
 /* phone only: underline "change it" in the pop-up, smaller + lower watermark */
 @media (max-width:600px){
-body.pop-on .way{animation:wayul .9s ease 4s forwards}
-@keyframes wayul{to{text-decoration-color:currentColor}}
 .foot{font-size:.8rem}
 .foot:not(.f4):not(.fi){bottom:calc(1.4rem + env(safe-area-inset-bottom,0px))}
+}
+/* phone / touch: draw the "change it" underline 3s after the pop-up opens (background-based, works on iOS + Android) */
+@media (max-width:600px),(hover:none) and (pointer:coarse){
+.way{text-decoration:none;background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-position:0 100%;background-size:0 2px;padding-bottom:.12em}
+body.pop-on .way{animation:wayline .9s ease 3s forwards}
+@keyframes wayline{from{background-size:0 2px}to{background-size:100% 2px}}
 }
 </style>
 <script>(function(){var v;try{v=sessionStorage.getItem('bofTheme')}catch(e){}
